@@ -1,0 +1,49 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+    <title>Check de extintores</title>
+  </head>
+  <body>
+    <section id="overlay">
+        <img src="Logistica_Seguridad_VN1.jpg" alt="Logo logistica seguridad" id="logo">
+        <hr>
+        <form action="completado.html" method="post">
+          <h1>Revisión de los extintores</h1>
+            <section class="IdExtintor">
+            <label for="IdExtintor">ID Extintor</label>
+                  <input type="text" name="IdExtintor" id="IdExtintor" value="">
+          </section>
+          <hr>
+          <section class="check">
+            <span>Marca el correcto funcionamiento de las siguientes funciones</span>
+          <br>
+        <input id="Gabinete" name="Gabinete" type="checkbox" value="Gabinete">
+				<label for="Gabinete">Gabinete</label>
+        <input id="Vidrio" name="Vidrio" type="checkbox" value="Vidrio">
+                <label for="Vidrio">Vidrio</label>
+        <input id="Leyenda" name="Leyenda" type="checkbox" value="Leyenda">
+				<label for="Leyenda">Leyenda</label>
+        <input id="Manguera" name="Manguera" type="checkbox" value="Manguera">
+                <label for="Manguera">Manguera</label>
+        <input id="Chiflon" name="Chiflon" type="checkbox" value="Chiflon">
+                <label for="Chiflon">Chiflon</label>
+        <input id="Valvula" name="Valvula" type="checkbox" value="Valvula">
+				<label for="Valvula">Valvula</label>
+        <input id="Señalizacion" name="Señalizacion" type="checkbox" value="Señalizacion">
+                <label for="Señalizacion">Señalización</label>
+          </section>
+          <section class="Comentarios">
+            <span>Escribe las observaciones extras que detectas</span>
+            <br>
+            <textarea id="extra" name="extra" rows="3" cols="40"></textarea>
+          </section>
+          <hr>
+          <section class="Enviar form">
+            <input type="submit" value="Enviar revisión">
+          </section>
+        </form>
+      </section>
+  </body>
+</html>
