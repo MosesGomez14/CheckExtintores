@@ -2,8 +2,14 @@ body {
     background-color: #211A1D;
     font-family: Rubik, Arial;
   }
-  
+  #QueRevisar
+  {
+    text-align: center;
+    line-height: 30px;
+    overflow: auto;
+  }
   form {
+    display: none;
     text-align: center;
     line-height: 30px;
     height: 80%;

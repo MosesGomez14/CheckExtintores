@@ -3,19 +3,63 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
-    <script src="MosesGomez14/CheckExtintores/node_modules/html5-qrcode/html5-qrcode.min.js"></script>
     <title>Check de extintores</title>
   </head>
-  <body>
+  <body >
     <section id="overlay">
         <img src="Logistica_Seguridad_VN1.jpg" alt="Logo logistica seguridad" id="logo">
         <hr>
         <div id="reader"></div>
-        <form action="completado.html" method="post">
+        <label for="QueRevisar">¿Que revisaras?:</label>
+          <select id="QueRevisar" name="revisar" onchange="CambiarRevision();">
+          <option value="Extintor">Extintor</option>
+          <option value="Hidrante">Hidrante</option>
+          </select>
+        <form id="CheckHidrante" action="completado.html" method="post">
+          <h1>Revisión de los extintores</h1>
+            <section class="IdHidrante">
+            <label for="IdHidrante">ID Extintor</label>
+                  <input type="text" name="IdHidrante" id="result value="" required>
+          </section>
+          <hr>
+          <section class="check">
+            <span>Marca el correcto funcionamiento de las siguientes funciones</span>
+          <br>
+        <input id="Gabinete" name="Gabinete" type="checkbox" value="Gabinete">
+				<label for="Gabinete">Gabinete</label>
+        <input id="Vidrio" name="Vidrio" type="checkbox" value="Vidrio">
+                <label for="Vidrio">Vidrio</label>
+        <input id="Leyenda" name="Leyenda" type="checkbox" value="Leyenda">
+				<label for="Leyenda">Leyenda</label>
+        <input id="Manguera" name="Manguera" type="checkbox" value="Manguera">
+                <label for="Manguera">Manguera</label>
+        <input id="Chiflon" name="Chiflon" type="checkbox" value="Chiflon">
+                <label for="Chiflon">Chiflon</label>
+        <input id="Valvula" name="Valvula" type="checkbox" value="Valvula">
+				<label for="Valvula">Valvula</label>
+        <input id="Señalizacion" name="Señalizacion" type="checkbox" value="Señalizacion">
+                <label for="Señalizacion">Señalización</label>
+          </section>
+          <section class="Comentarios">
+            <span>Escribe las observaciones extras que detectas</span>
+            <br>
+            <textarea id="extra" name="extra" rows="3" cols="40"></textarea>
+          </section>
+          <hr>
+          <section class="Enviar form">
+            <input type="submit" value="Enviar revisión" id="submit" onclick="enviar">
+          </section>
+        </form>
+        <form id="CheckExtintor" action="completado.html" method="post">
           <h1>Revisión de los extintores</h1>
             <section class="IdExtintor">
             <label for="IdExtintor">ID Extintor</label>
                   <input type="text" name="IdExtintor" id="result value="" required>
+          </section>
+          <hr>
+          <section class="secFechaCarga">
+            <label for="FechaCarga">Coloca la fecha de carga del extintor</label>
+            <input type="date" name="FechaCarga" id="FechaCarga" required>
           </section>
           <hr>
           <section class="check">
@@ -49,25 +93,20 @@
       </section>
   </body>
   <script>
-    // When scan is successful fucntion will produce data
-function onScanSuccess(qrCodeMessage) {
-  document.getElementById("result").innerHTML =
-    '<span class="result">' + qrCodeMessage + "</span>";
+    function Esconder(){
+      document.getElementById("CheckExtintor").style.display = "none";
+      document.getElementById("CheckHidrante").style.display="none";
+    }
+    function CambiarRevision() {
+      var check=document.getElementById("QueRevisar").value;
+    if(check==="Hidrante"){
+      document.getElementById("CheckExtintor").style.display = "none";
+      document.getElementById("CheckHidrante").style.display="inline";
+    }
+    if(check==="Extintor"){
+      document.getElementById("CheckHidrante").style.display="none";
+      document.getElementById("CheckExtintor").style.display = "inLine";
+    }
 }
-
-// When scan is unsuccessful fucntion will produce error message
-function onScanError(errorMessage) {
-  // Handle Scan Error
-}
-
-// Setting up Qr Scanner properties
-var html5QrCodeScanner = new Html5QrcodeScanner("reader", {
-  fps: 10,
-  qrbox: 250
-});
-
-// in
-html5QrCodeScanner.render(onScanSuccess, onScanError);
-
   </script>
 </html>
