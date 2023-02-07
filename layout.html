@@ -3,19 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="layoutStyle.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Layout almacén</title>
 </head>
 <body>
-    <div class="popup">
-        <button id="close">&times;</button>
-        <h2>Exintor X</h2>
-            <p>Colocar info del extintor</p>
+    <div>
+        <map name="workmap">
+            <area shape="rect" coords="1871.3575, 658.89709, 1892, 672" href="#modal1"  class="openModal">
+          </map>
+        <img src="layout mazaConExtinto2r.svg" alt="" usemap="#workmap">
     </div>
-    <map name="workmap">
-        <area shape="rect" coords="1725, 141, 28, 332" href="" onclick="myFunction()">
-      </map>
-    <img src="layout maza.svg" alt="" usemap="#workmap">
+    <div id="modal1" class="modalmask">
+        <div class="modalbox movedown">
+            <a href="#close" title="Close" class="close">X</a>
+            <h2 class="TituloModal">Extintor 79</h2>
+            <img src="ImagenesExtintores/E1.jpg" alt="" class="FotoExtintor">
+            <ul class="Lista">
+                <li id="Fecha">Fecha de carga: </li>
+                <li>Manguera</li>
+                <li>Seguro</li>
+                <li>Soporte</li>
+                <li>Estado de cilindro</li>
+                <li>Señalización</li>
+                <li>Presion manometro</li>
+                <li>Observaciones</li>
+            </ul>
+        </div>
+    </div>
+      
+</div>
 </body>
 <script>
     function myFunction() {

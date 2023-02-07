@@ -3,28 +3,32 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <title>Check de extintores</title>
   </head>
   <body >
     <section id="overlay">
-        <img src="Logistica_Seguridad_VN1.jpg" alt="Logo logistica seguridad" id="logo">
+        <img src="Logos/LogoSeguridad2.svg" alt="Logo logistica seguridad" id="logo" class="logo">
         <hr>
         <div id="reader"></div>
-        <label for="QueRevisar">¿Que revisaras?:</label>
+        <section>
+          <label for="QueRevisar">¿Que revisaras?:</label>
           <select id="QueRevisar" name="revisar" onchange="CambiarRevision();">
           <option value="Extintor">Extintor</option>
           <option value="Hidrante">Hidrante</option>
           </select>
-        <form id="CheckHidrante" action="completado.html" method="post">
-          <h1>Revisión de los extintores</h1>
+        </section>
+        <form id="CheckHidrante" action="completado.html" method="post" enctype="multipart/form-data">
+          <h1>Revisión de hidrantes</h1>
             <section class="IdHidrante">
-            <label for="IdHidrante">ID Extintor</label>
+            <label for="IdHidrante">ID hidrante</label>
                   <input type="text" name="IdHidrante" id="result value="" required>
           </section>
           <hr>
-          <section class="Fotos"></section>
+          <section class="Fotos">
           <label for="Foto">Toma una foto</label>
-          <input type="image" src="" alt="" id="Foto" name="Foto" required>
+          <input type="file" src="" alt="" id="Foto" name="Foto" required>
+          </section>
           <hr>
           <section class="check">
             <span>Marca el correcto funcionamiento de las siguientes funciones</span>
@@ -55,12 +59,17 @@
           </section>
         </form>
         <form id="CheckExtintor" action="completado.html" method="post">
-          <h1>Revisión de los extintores</h1>
+          <h1>Revisión de extintores</h1>
             <section class="IdExtintor">
             <label for="IdExtintor">ID Extintor</label>
                   <input type="text" name="IdExtintor" id="result value="" required>
           </section>
           <hr>
+          <section class="Fotos">
+            <label for="Foto">Toma una foto</label>
+            <input type="file" src="" alt="" id="Foto" name="Foto" required>
+            </section>
+            <hr>
           <section class="secFechaCarga">
             <label for="FechaCarga">Coloca la fecha de carga del extintor</label>
             <input type="date" name="FechaCarga" id="FechaCarga" required>
@@ -97,6 +106,22 @@
       </section>
   </body>
   <script>
+    function onScanSuccess(decodedText, decodedResult) {
+  // handle the scanned code as you like, for example:
+  console.log(`Code matched = ${decodedText}`, decodedResult);
+}
+
+function onScanFailure(error) {
+  // handle scan failure, usually better to ignore and keep scanning.
+  // for example:
+  console.warn(`Code scan error = ${error}`);
+}
+
+let html5QrcodeScanner = new Html5QrcodeScanner(
+  "reader",
+  { fps: 10, qrbox: {width: 250, height: 250} },
+  /* verbose= */ false);
+html5QrcodeScanner.render(onScanSuccess, onScanFailure);
     function Esconder(){
       document.getElementById("CheckExtintor").style.display = "none";
       document.getElementById("CheckHidrante").style.display="none";
