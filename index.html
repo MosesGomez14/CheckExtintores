@@ -8,7 +8,7 @@
   </head>
   <body >
     <section id="overlay">
-        <img src="Logos/LogoSeguridad2.svg" alt="Logo logistica seguridad" id="logo" class="logo">
+        <img src="Logos/LogoSeguridad2.svg" alt="Logo logistica seguridad" id="logo" class="logo" onclick="CambiarALayout();">
         <hr>
         <div id="reader"></div>
         <section>
@@ -136,6 +136,9 @@ html5QrcodeScanner.render(onScanSuccess, onScanFailure);
       document.getElementById("CheckHidrante").style.display="none";
       document.getElementById("CheckExtintor").style.display = "inLine";
     }
+}
+function CambiarALayout(){
+  window.location.href = "layout.html";
 }
   </script>
 </html>
