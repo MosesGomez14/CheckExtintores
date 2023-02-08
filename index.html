@@ -10,7 +10,7 @@
     <section id="overlay">
         <img src="Logos/LogoSeguridad2.svg" alt="Logo logistica seguridad" id="logo" class="logo" onclick="CambiarALayout();">
         <hr>
-        <!--<section>
+        <!--<section> POSIBLEMENTE SE ELIMINE ESTO SI FUNCIONA EL AUTOMATIZADO AL ESCANEAR EL QR 
           <label for="QueRevisar">¿Que revisaras?:</label>
           <select id="QueRevisar" name="revisar" onchange="CambiarRevision();">
           <option value="Extintor">Extintor</option>
@@ -60,6 +60,7 @@
           <section class="Enviar form">
             <input type="submit" value="Enviar revisión" id="submit" onclick="enviar">
           </section>
+          <hr>
         </form>
         <form id="CheckExtintor" action="completado.html" method="post">
           <h1>Revisión de extintores</h1>
@@ -105,10 +106,13 @@
           <section class="Enviar form">
             <input type="submit" value="Enviar revisión" id="submit" onclick="enviar">
           </section>
+          <hr>
         </form>
       </section>
   </body>
   <script>
+    //#region LOGICA CODIGO QR
+
  function onScanSuccess(decodedText, decodedResult) {
   // handle the scanned code as you like, for example:
   console.log(`Code matched = ${decodedText}`, decodedResult);
@@ -136,6 +140,9 @@ let html5QrcodeScanner = new Html5QrcodeScanner(
   { fps: 10, qrbox: {width: 250, height: 250} },
   /* verbose= */ false);
 html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+//#endregion
+
+//#region Posiblemente se borre
     function Esconder(){
       document.getElementById("CheckExtintor").style.display = "none";
       document.getElementById("CheckHidrante").style.display="none";
@@ -151,8 +158,18 @@ html5QrcodeScanner.render(onScanSuccess, onScanFailure);
       document.getElementById("CheckExtintor").style.display = "inLine";
     }
 }
+//#endregion
 function CambiarALayout(){
   window.location.href = "layout.html";
+}
+
+function GuardarNuevaImagen(imageData){
+  var fs = require('fs'); 
+  var imagedata=imageData // get imagedata from POST request 
+  fs.writeFile("/ImagenesExtintores/E2.jpg", imagedata, 'binary', function(err) { 
+    console.log("The file was saved!"); 
+ 
+});  
 }
   </script>
 </html>
