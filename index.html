@@ -25,7 +25,7 @@
           <h1>Revisión de hidrantes</h1>
             <section class="IdHidrante">
             <label for="IdHidrante">ID hidrante</label>
-                  <input type="text" name="IdHidrante" id="Hidranteresult" value="" required>
+                  <input type="text" name="IdHidrante" id="Hidranteresult" value="" required readonly>
           </section>
           <hr>
           <section class="Fotos">
@@ -66,7 +66,7 @@
           <h1>Revisión de extintores</h1>
             <section class="IdExtintor">
             <label for="IdExtintor">ID Extintor</label>
-                  <input type="text" name="IdExtintor" id="Idresult" value="" required>
+                  <input type="text" name="IdExtintor" id="Idresult" value="" required readonly>
           </section>
           <hr>
           <section class="Fotos">
@@ -161,6 +161,10 @@ html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 //#endregion
 function CambiarALayout(){
   window.location.href = "layout.html";
+}
+
+function SacarInfoForms(){
+  var data= new FormData(document.getElementById("CheckExtintor"));
 }
 
 function GuardarNuevaImagen(imageData){
