@@ -10,13 +10,13 @@
     <section id="overlay">
         <img src="Logos/LogoSeguridad2.svg" alt="Logo logistica seguridad" id="logo" class="logo" onclick="CambiarALayout();">
         <hr>
-        <section>
+        <!--<section>
           <label for="QueRevisar">¿Que revisaras?:</label>
           <select id="QueRevisar" name="revisar" onchange="CambiarRevision();">
           <option value="Extintor">Extintor</option>
           <option value="Hidrante">Hidrante</option>
           </select>
-        </section>
+        </section>-->
         <section>
           <div id="reader"></div>
         </section>
@@ -25,7 +25,7 @@
           <h1>Revisión de hidrantes</h1>
             <section class="IdHidrante">
             <label for="IdHidrante">ID hidrante</label>
-                  <input type="text" name="IdHidrante" id="result value="" required>
+                  <input type="text" name="IdHidrante" id="Hidranteresult" value="" required>
           </section>
           <hr>
           <section class="Fotos">
@@ -112,7 +112,17 @@
  function onScanSuccess(decodedText, decodedResult) {
   // handle the scanned code as you like, for example:
   console.log(`Code matched = ${decodedText}`, decodedResult);
-  document.getElementById("Idresult").value = decodedText;
+  var regExp = /[E]/;
+  var resultado = decodedText;     
+if(regExp.test(resultado)){
+      document.getElementById("CheckHidrante").style.display="none";  
+      document.getElementById("CheckExtintor").style.display = "inLine";
+      document.getElementById("Idresult").value = resultado;
+} else {
+      document.getElementById("CheckExtintor").style.display = "none";
+      document.getElementById("CheckHidrante").style.display="inline";
+      document.getElementById("Hidranteresult").value = resultado;
+}
 }
 
 function onScanFailure(error) {
