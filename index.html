@@ -64,7 +64,7 @@
           <hr>
             <section class="IdExtintor">
             <label for="IdExtintor">ID Extintor</label>
-                  <input type="text" name="IdExtintor" id="result value="" required>
+                  <input type="text" name="IdExtintor" id="Idresult" value="" required>
           </section>
           <hr>
           <section class="Fotos">
@@ -111,7 +111,7 @@
     function onScanSuccess(decodedText, decodedResult) {
   // handle the scanned code as you like, for example:
   console.log(`Code matched = ${decodedText}`, decodedResult);
-  
+  document.getElementById("Idresult").value = decodedResult;
 
 }
 
