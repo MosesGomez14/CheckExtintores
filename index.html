@@ -10,7 +10,6 @@
     <section id="overlay">
         <img src="Logos/LogoSeguridad2.svg" alt="Logo logistica seguridad" id="logo" class="logo" onclick="CambiarALayout();">
         <hr>
-        <div id="reader" width="250px" height="250px"></div>
         <section>
           <label for="QueRevisar">¿Que revisaras?:</label>
           <select id="QueRevisar" name="revisar" onchange="CambiarRevision();">
@@ -20,6 +19,7 @@
         </section>
         <form id="CheckHidrante" action="completado.html" method="post" enctype="multipart/form-data">
           <h1>Revisión de hidrantes</h1>
+          
             <section class="IdHidrante">
             <label for="IdHidrante">ID hidrante</label>
                   <input type="text" name="IdHidrante" id="result value="" required>
@@ -60,6 +60,8 @@
         </form>
         <form id="CheckExtintor" action="completado.html" method="post">
           <h1>Revisión de extintores</h1>
+          <div id="reader"></div>
+          <hr>
             <section class="IdExtintor">
             <label for="IdExtintor">ID Extintor</label>
                   <input type="text" name="IdExtintor" id="result value="" required>
@@ -109,6 +111,8 @@
     function onScanSuccess(decodedText, decodedResult) {
   // handle the scanned code as you like, for example:
   console.log(`Code matched = ${decodedText}`, decodedResult);
+  
+
 }
 
 function onScanFailure(error) {
